@@ -4,7 +4,7 @@ Frontend to communicate with GICT Systems backend API
 ### Dependencies
   - react and react-dom
   - react-router-dom
-  - npm axio
+  - npm axios
  
 ## SUCCESSFUL OUTCOME
 
