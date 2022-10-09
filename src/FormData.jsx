@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
 
-const baseURL = "http://developers.gictsystems.com/api/dummy/items/";
+const submitBaseURL = "http://developers.gictsystems.com/api/dummy/submit/";
 const AuthStr = "Bearer ".concat("ALDJAK23423JKSLAJAF23423J23SAD3");
-// const myApiURL = "http://127.0.0.1:8000/api/v1/";
 
 function FormData() {
   const [fullnames, setFullnames] = React.useState("");
@@ -13,9 +12,7 @@ function FormData() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Log the data
     console.log(fullnames, email, phone, address);
-    // send request
     try {
       const postOptions = {
         method: "POST",
@@ -25,20 +22,14 @@ function FormData() {
           "Content-Type": "application/json",
         },
       };
-      const data = { author: "1", title: "Sample Title", body: "Sample Body" };
-      // Object to pass in the
+      // Object to pass in the post request
       const person_data = {
         fullnames,
         email,
         phone,
         address,
       };
-      /**
-       * Adding the header to the post request was brings a CORS error message i.e
-       * CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource
-       */
-
-      const resp = await axios.post(baseURL, JSON.stringify(data));
+      const resp = await axios.post(submitBaseURL, JSON.stringify(person_data));
       console.log(resp.data);
     } catch (error) {
       console.log(error.resp);
