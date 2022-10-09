@@ -5,46 +5,55 @@ Frontend to communicate with GICT Systems backend API
   - react and react-dom
   - react-router-dom
   - npm axio
-  -
-### Success
+ 
+## SUCCESSFUL OUTCOME
 
-#### POST THE FORM DATA
+### POST FORM DATA
 <prep>
- 1. POST request without authorization header resulted in: 
+    POST request without authorization header resulted in: 
   
-      Status: 200 OK
-      Response: `{"StatusCode":0,"Message":"Successfully Submited"}`
+        Status: 200 OK
+        Response: `{"StatusCode":0,"Message":"Successfully Submited"}`
   
 </prep>
 
-### Problems / Challenges encountered
-
-1. POST request without the authorization header the results is:
-
-      Did not get the status `201 Created` code
-
-<prep>  
-2. POST request with the authorization header with 'Bearer + authorization'
-      Status: 401 Unauthorized error
+### GET FORM DATA
+<prep>
+    GET request without the authorization header => (In this case Used own api not returning CORS error):
   
-      Catch Error: `Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://developers.gictsystems.com/api/dummy/items/.  (Reason: CORS preflight response did not succeed). Status code: 401`
+        Table refreshing: the table refreshes list and update table after 10 seconds without reloading the page
+  
+</prep>
+
+## PROBLEMS / CHALLENGES ENCOUNTERED
+### POST
+<prep> 
+  1. POST request without the authorization header the results is:
+
+        Did not get the status `201 Created` code
+</prep> 
+<prep>  
+    2. POST request with the authorization header including 'Bearer + authorization'
+        Status: 401 Unauthorized error
+  
+        Catch Error: `Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://developers.gictsystems.com/api/dummy/items/.  (Reason: CORS preflight response did not succeed). Status code: 401`
 </prep>
  
-  #### 2. GET
+### GET
 <prep>
-1. GET request without the authorization header the results is:
+    1. GET request without the authorization header the results is:
 
-      Status: 401 Unauthorized error
+        Status: 401 Unauthorized error
+    
+        Catch Error Message : `message: "Request failed with status code 401", name: "AxiosError", code: "ERR_BAD_REQUEST", ...`
   
-      With Error Message : `Request failed with status code 401`
-  
-      Response: `{"StatusCode":1,"Message":"Unauthorized Access"}`
+        Response: `{"StatusCode":1,"Message":"Unauthorized Access"}`
  </prep>
  <prep>
-2. POST request with the authorization header with 'Bearer + authorization'
+    2. GET request with the authorization header including 'Bearer + authorization'
 
-      Status: 401 Unauthorized error
+        Status: 401 Unauthorized error
   
-      Response Body: `Response body is not available to scripts (Reason: CORS Preflight Did Not Succeed)`
+        Response Body: `Response body is not available to scripts (Reason: CORS Preflight Did Not Succeed)`
       
-      Catch Error : `Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://developers.gictsystems.com/api/dummy/items/. (Reason: CORS request did not succeed). Status code: (null).`</prep>
+        Catch Error : `Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://developers.gictsystems.com/api/dummy/items/. (Reason: CORS request did not succeed). Status code: (null).`</prep>
