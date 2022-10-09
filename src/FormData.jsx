@@ -31,8 +31,8 @@ function FormData() {
       };
       const resp = await axios.post(submitBaseURL, JSON.stringify(person_data));
       console.log(resp.data);
-    } catch (error) {
-      console.log(error.resp);
+    } catch (err) {
+      console.log(err.resp);
     }
   };
 
