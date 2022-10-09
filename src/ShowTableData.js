@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const baseURL = "http://developers.gictsystems.com/api/dummy/items/";
+const fetchBaseURL = "http://developers.gictsystems.com/api/dummy/items/";
 const AuthStr = "Bearer ".concat("ALDJAK23423JKSLAJAF23423J23SAD3");
-const baseURL1 = "http://127.0.0.1:8000/api/v1/";
+// const localBaseURL = "http://127.0.0.1:8000/api/v1/";
 
 class ShowTableData extends Component {
   constructor(props) {
@@ -25,12 +25,19 @@ class ShowTableData extends Component {
    * Cross-Origin Request Blocked: The Same Origin Policy disallows
    * reading the remote resource at http://developers.gictsystems.com/api/dummy/items/.
    *
-   * But in my case this is how i go about fetcvhing data from my 'local API' endpoint
+   * But in my case this is how i go about fetching data from my 'local API' endpoint
    */
   fetchData = () => {
+    const getOptions = {
+      method: "GET",
+      mode: "no-cors",
+      headers: {
+        Authorization: AuthStr,
+        "Content-Type": "application/json",
+      },
+    };
     axios
-      // ! CHANGE THE BASE URL
-      .get(baseURL1)
+      .get(fetchBaseURL, getOptions)
       .then((res) => {
         this.setState({ posts: res.data });
         console.log(res.data);
@@ -58,10 +65,10 @@ class ShowTableData extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>Bethwell Langat</td>
-              <td>bethu05.dev@gmail.com</td>
+              <td>Dummy name</td>
+              <td>dummyname@gmail.com</td>
               <td>0700123456</td>
-              <td>Umoja, Nairobi</td>
+              <td>Langata, Nairobi</td>
               <td>
                 <Link>Edit</Link>
               </td>
@@ -69,10 +76,10 @@ class ShowTableData extends Component {
             {this.state.posts.map((item, index) => {
               return (
                 <tr key={index}>
-                  <td>{item.id}</td>
-                  <td>{item.title}</td>
-                  <td>{item.body}</td>
-                  <td>{item.created_at}</td>
+                  <td>{item.fullnames}</td>
+                  <td>{item.email}</td>
+                  <td>{item.phone}</td>
+                  <td>{item.address}</td>
                   <td>
                     <Link>Edit</Link>
                   </td>
