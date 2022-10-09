@@ -4,8 +4,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import ShowTableData from "./ShowTableData";
 import FormData from "./FormData";
 
-// const baseURL = "http://developers.gictsystems.com/api/dummy/items/";
-// const AuthStr = "Bearer ".concat("ALDJAK23423JKSLAJAF23423J23SAD3");
 class App extends Component {
   render() {
     return (
